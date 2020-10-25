@@ -7,3 +7,5 @@ obj
 .config/
 
 package-lock.json
+
+.vs/PolicyExampleAPIServer/xs/

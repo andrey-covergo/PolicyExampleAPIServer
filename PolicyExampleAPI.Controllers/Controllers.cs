@@ -19,16 +19,16 @@ namespace PolicyExampleAPI
     {
         /// <summary>Get policies</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PolicyState>> GetPolicyAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PolicyState>> PolicyGetAsync();
     
         /// <summary>Create policy</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<string> PostPolicyAsync();
+        System.Threading.Tasks.Task<string> PolicyPostAsync();
     
         /// <summary>Get policy details</summary>
         /// <param name="policyId">id of the policy for the operation</param>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<PolicyState> GetPolicyPolicyIdAsync(string policyId);
+        System.Threading.Tasks.Task<PolicyState> PolicyGetAsync(string policyId);
     
     }
     
@@ -45,26 +45,26 @@ namespace PolicyExampleAPI
         /// <summary>Get policies</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("policy")]
-        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PolicyState>> GetPolicy()
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<PolicyState>> PolicyGet()
         {
-            return _implementation.GetPolicyAsync();
+            return _implementation.PolicyGetAsync();
         }
     
         /// <summary>Create policy</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("policy")]
-        public System.Threading.Tasks.Task<string> PostPolicy()
+        public System.Threading.Tasks.Task<string> PolicyPost()
         {
-            return _implementation.PostPolicyAsync();
+            return _implementation.PolicyPostAsync();
         }
     
         /// <summary>Get policy details</summary>
         /// <param name="policyId">id of the policy for the operation</param>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}")]
-        public System.Threading.Tasks.Task<PolicyState> GetPolicyPolicyId(string policyId)
+        public System.Threading.Tasks.Task<PolicyState> PolicyGet(string policyId)
         {
-            return _implementation.GetPolicyPolicyIdAsync(policyId);
+            return _implementation.PolicyGetAsync(policyId);
         }
     
     }
@@ -74,15 +74,15 @@ namespace PolicyExampleAPI
     {
         /// <summary>Get issuance requests</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Anonymous>> GetPolicyPolicyIdStateAsync(string policyId);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Anonymous>> IssuanceGetAsync(string policyId);
     
         /// <summary>Create issuance request</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<RequestStatus> PostPolicyPolicyIdIssuanceAsync(IssuanceRequest body, string policyId);
+        System.Threading.Tasks.Task<RequestStatus> IssuancePostAsync(IssuanceRequest body, string policyId);
     
         /// <summary>Get issuance request details</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<RequestStatus> GetPolicyPolicyIdIssuanceIssuanceIdAsync(string policyId, string issuanceId);
+        System.Threading.Tasks.Task<RequestStatus> IssuanceGetAsync(string policyId, string issuanceId);
     
     }
     
@@ -99,25 +99,25 @@ namespace PolicyExampleAPI
         /// <summary>Get issuance requests</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}/issuance")]
-        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Anonymous>> GetPolicyPolicyIdState(string policyId)
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Anonymous>> IssuanceGet(string policyId)
         {
-            return _implementation.GetPolicyPolicyIdStateAsync(policyId);
+            return _implementation.IssuanceGetAsync(policyId);
         }
     
         /// <summary>Create issuance request</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}/issuance")]
-        public System.Threading.Tasks.Task<RequestStatus> PostPolicyPolicyIdIssuance([Microsoft.AspNetCore.Mvc.FromBody] IssuanceRequest body, string policyId)
+        public System.Threading.Tasks.Task<RequestStatus> IssuancePost([Microsoft.AspNetCore.Mvc.FromBody] IssuanceRequest body, string policyId)
         {
-            return _implementation.PostPolicyPolicyIdIssuanceAsync(body, policyId);
+            return _implementation.IssuancePostAsync(body, policyId);
         }
     
         /// <summary>Get issuance request details</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}/issuance/{issuanceId}")]
-        public System.Threading.Tasks.Task<RequestStatus> GetPolicyPolicyIdIssuanceIssuanceId(string policyId, string issuanceId)
+        public System.Threading.Tasks.Task<RequestStatus> IssuanceGet(string policyId, string issuanceId)
         {
-            return _implementation.GetPolicyPolicyIdIssuanceIssuanceIdAsync(policyId, issuanceId);
+            return _implementation.IssuanceGetAsync(policyId, issuanceId);
         }
     
     }
@@ -127,15 +127,15 @@ namespace PolicyExampleAPI
     {
         /// <summary>Get policy configurations</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Anonymous2>> GetPolicyPolicyIdConfigurationsAsync(string policyId);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Anonymous2>> ConfigurationsGetAsync(string policyId);
     
         /// <summary>Create policy configuration</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<RequestStatus> PostPolicyPolicyIdConfigurationsAsync(Configuration body, string policyId);
+        System.Threading.Tasks.Task<RequestStatus> ConfigurationsPostAsync(Configuration body, string policyId);
     
         /// <summary>Get policy configuration details</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<RequestStatus> GetPolicyPolicyIdConfigurationsConfigurationIdAsync(string policyId, string configurationId);
+        System.Threading.Tasks.Task<RequestStatus> ConfigurationsGetAsync(string policyId, string configurationId);
     
     }
     
@@ -152,25 +152,25 @@ namespace PolicyExampleAPI
         /// <summary>Get policy configurations</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}/configurations")]
-        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Anonymous2>> GetPolicyPolicyIdConfigurations(string policyId)
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Anonymous2>> ConfigurationsGet(string policyId)
         {
-            return _implementation.GetPolicyPolicyIdConfigurationsAsync(policyId);
+            return _implementation.ConfigurationsGetAsync(policyId);
         }
     
         /// <summary>Create policy configuration</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}/configurations")]
-        public System.Threading.Tasks.Task<RequestStatus> PostPolicyPolicyIdConfigurations([Microsoft.AspNetCore.Mvc.FromBody] Configuration body, string policyId)
+        public System.Threading.Tasks.Task<RequestStatus> ConfigurationsPost([Microsoft.AspNetCore.Mvc.FromBody] Configuration body, string policyId)
         {
-            return _implementation.PostPolicyPolicyIdConfigurationsAsync(body, policyId);
+            return _implementation.ConfigurationsPostAsync(body, policyId);
         }
     
         /// <summary>Get policy configuration details</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}/configurations/{configurationId}")]
-        public System.Threading.Tasks.Task<RequestStatus> GetPolicyPolicyIdConfigurationsConfigurationId(string policyId, string configurationId)
+        public System.Threading.Tasks.Task<RequestStatus> ConfigurationsGet(string policyId, string configurationId)
         {
-            return _implementation.GetPolicyPolicyIdConfigurationsConfigurationIdAsync(policyId, configurationId);
+            return _implementation.ConfigurationsGetAsync(policyId, configurationId);
         }
     
     }
@@ -180,11 +180,11 @@ namespace PolicyExampleAPI
     {
         /// <summary>Get policy business time</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<System.DateTimeOffset> GetPolicyPolicyIdBusinesstimeAsync(string policyId);
+        System.Threading.Tasks.Task<System.DateTimeOffset> BusinesstimeGetAsync(string policyId);
     
         /// <summary>Override policy business time</summary>
         /// <returns>Accepted</returns>
-        System.Threading.Tasks.Task PostpolicyPolicyIdBusinesstimeAsync(System.DateTimeOffset? body, string policyId);
+        System.Threading.Tasks.Task BusinesstimePostAsync(System.DateTimeOffset? body, string policyId);
     
     }
     
@@ -201,17 +201,17 @@ namespace PolicyExampleAPI
         /// <summary>Get policy business time</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}/businesstime")]
-        public System.Threading.Tasks.Task<System.DateTimeOffset> GetPolicyPolicyIdBusinesstime(string policyId)
+        public System.Threading.Tasks.Task<System.DateTimeOffset> BusinesstimeGet(string policyId)
         {
-            return _implementation.GetPolicyPolicyIdBusinesstimeAsync(policyId);
+            return _implementation.BusinesstimeGetAsync(policyId);
         }
     
         /// <summary>Override policy business time</summary>
         /// <returns>Accepted</returns>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}/businesstime")]
-        public System.Threading.Tasks.Task PostpolicyPolicyIdBusinesstime([Microsoft.AspNetCore.Mvc.FromBody] System.DateTimeOffset? body, string policyId)
+        public System.Threading.Tasks.Task BusinesstimePost([Microsoft.AspNetCore.Mvc.FromBody] System.DateTimeOffset? body, string policyId)
         {
-            return _implementation.PostpolicyPolicyIdBusinesstimeAsync(body, policyId);
+            return _implementation.BusinesstimePostAsync(body, policyId);
         }
     
     }
@@ -221,15 +221,15 @@ namespace PolicyExampleAPI
     {
         /// <summary>Get policy claims</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Claim>> GetPolicyPolicyIdClaimsAsync(string policyId);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Claim>> ClaimGetAsync(string policyId);
     
         /// <summary>Submit policy claim</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task PostPolicyPolicyIdClaimAsync(Claim body, string policyId);
+        System.Threading.Tasks.Task ClaimPostAsync(Claim body, string policyId);
     
         /// <summary>Get policy claim details</summary>
         /// <returns>OK</returns>
-        System.Threading.Tasks.Task<Response> GetPolicyPolicyIdClaimClaimIdAsync(string policyId, string claimId);
+        System.Threading.Tasks.Task<Response> ClaimGetAsync(string policyId, string claimId);
     
     }
     
@@ -246,25 +246,25 @@ namespace PolicyExampleAPI
         /// <summary>Get policy claims</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}/claim")]
-        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Claim>> GetPolicyPolicyIdClaims(string policyId)
+        public System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Claim>> ClaimGet(string policyId)
         {
-            return _implementation.GetPolicyPolicyIdClaimsAsync(policyId);
+            return _implementation.ClaimGetAsync(policyId);
         }
     
         /// <summary>Submit policy claim</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}/claim")]
-        public System.Threading.Tasks.Task PostPolicyPolicyIdClaim([Microsoft.AspNetCore.Mvc.FromBody] Claim body, string policyId)
+        public System.Threading.Tasks.Task ClaimPost([Microsoft.AspNetCore.Mvc.FromBody] Claim body, string policyId)
         {
-            return _implementation.PostPolicyPolicyIdClaimAsync(body, policyId);
+            return _implementation.ClaimPostAsync(body, policyId);
         }
     
         /// <summary>Get policy claim details</summary>
         /// <returns>OK</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("policy/{policyId}/claim/{claimId}")]
-        public System.Threading.Tasks.Task<Response> GetPolicyPolicyIdClaimClaimId(string policyId, string claimId)
+        public System.Threading.Tasks.Task<Response> ClaimGet(string policyId, string claimId)
         {
-            return _implementation.GetPolicyPolicyIdClaimClaimIdAsync(policyId, claimId);
+            return _implementation.ClaimGetAsync(policyId, claimId);
         }
     
     }
